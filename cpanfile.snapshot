@@ -1,0 +1,16 @@
+# carton snapshot format: version 1.0
+DISTRIBUTIONS
+  Math-NumberCruncher-5.00
+    pathname: S/SI/SIFUKURT/Math-NumberCruncher-5.00.tar.gz
+    provides:
+      Math::NumberCruncher 5.00
+    requirements:
+      ExtUtils::MakeMaker 0
+      Math::BigInt 1.47
+  String-CamelCase-0.02
+    pathname: H/HI/HIO/String-CamelCase-0.02.tar.gz
+    provides:
+      String::CamelCase 0.02
+    requirements:
+      ExtUtils::MakeMaker 0
+      Test::More 0

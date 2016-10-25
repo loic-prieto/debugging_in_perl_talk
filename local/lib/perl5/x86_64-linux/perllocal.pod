@@ -1,0 +1,44 @@
+=head2 Fri Oct 21 11:17:45 2016: C<Module> L<Math::NumberCruncher|Math::NumberCruncher>
+
+=over 4
+
+=item *
+
+C<installed into: /home/loic/desarrollo/debugging_perl/local/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 5.00>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+
+=head2 Tue Oct 25 17:30:12 2016: C<Module> L<String::CamelCase|String::CamelCase>
+
+=over 4
+
+=item *
+
+C<installed into: /home/loic/desarrollo/debugging_perl/local/lib/perl5>
+
+=item *
+
+C<LINKTYPE: dynamic>
+
+=item *
+
+C<VERSION: 0.02>
+
+=item *
+
+C<EXE_FILES: >
+
+=back
+

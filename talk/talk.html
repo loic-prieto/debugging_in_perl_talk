@@ -1,0 +1,153 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/solarized.css">
+		<meta charset="utf-8" /> 
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                
+				<section id="introduction">
+					<section id="front">
+						<h1>Debugging in Perl</h1>
+						<p>by Loïc Prieto, <small>Perl Dev Extraordinaire</small></p>
+					</section>
+
+					<section>
+						<img src="images/what_happens_when_i_die.jpg" />
+						<aside class="notes">
+							- Let me tell you a story, what happens when I die.
+						</aside>
+					</section>
+
+					<section data-background="images/lol_look_at_these.jpg">
+						<aside class="notes">
+							- The choice. You can either listen to some crazy guy telling about the end of the world, or ignore him.
+						</aside>
+					</section>
+
+					<section data-background="images/heavenly_fathers.jpg">
+						<img src="images/debug_as_a_normal_human_being.png" class="fragment"/>
+						<aside class="notes">
+							- If you sacrificed everything, you got to go to heaven.
+							- A new project implemented with perl and...
+							- Linux Desktop
+							- a visual debugger.
+						</aside>
+					</section>
+
+					<section data-background="images/lol_look_at_these.jpg">
+						<aside class="notes">
+							- You made the bad choice and now those guys in the boat look at you with a smirk while you drown.
+							- What happens then? you don't go to heaven, thats for sure. No. You've got to maintain an undocumented perl project written 
+							  by some clever guy.
+							- You end up working directly on a check of one of the opsview slaves of MRW with no GUI.
+						</aside>
+					</section>
+
+					<section data-background="images/perl_debugger_is_nice.jpg">
+						<h2>Welcome to Perl Debugging in Capside</h2>
+						<div class="fragment">
+							<p>What are we going to see?</p>
+							<ol >
+								<li class="fragment">The traditional way</li>
+								<li class="fragment">The oh-my-god-,-I-wish-I-was-dead way</li>
+								<li class="fragment">Where we can go from here</li>
+							</ol>
+						</div>
+						<aside class="notes">
+							- Dramatic pause and click for the index.
+							- Explain briefly each way.
+						</aside>
+					</section>
+					
+				</section>
+				
+				<section id="traditional_way">
+					<section id="Data::Dumper" data-background="images/old_emo.jpg">
+						<h2>Data::Dumper, my old friend</h2>
+						<aside class="notes">
+							- explain a little about Data::Dumper and the print method
+							- show and debug file debugging_dumper_simple.pl
+							- The error is in using $ instead of @ to obtain array length in @precomputed_fibonacci_numbers
+						</aside>
+					</section>
+					<section>
+						<h2>The slow regard of perlish things</h2>
+						<p>
+						<aside class="notes">
+							- We're going to see an example of why this method feels lacking
+							- Debug debugging_dumper_slow_cycle.pl
+							- There's no error, just a slow way of debugging
+						</aside>
+					</section>
+					<section data-background="images/larry-wall-deal-with-it.jpg">
+						<h2>There is a better way</h2>
+					</section>
+				</section>
+				
+				<section id="perl_debugger">
+					<section data-background="images/perl_debugger_is_nice.jpg">
+						<h2>The perl debugger</h2>
+						
+						<aside class="notes">
+							- GDB-like UI
+							- Here is where it gets interesting. Tell about what it allows.
+							- live demo with debugging_debugger_inside_module.pl
+
+							- Navigate through the code with 'l' and '-'. Navigate to method with SomeMethod::say_hello
+							- put a breakpoint with 'b'
+							- list current breakpoints with 'L'. Explain conditional breakpoints.
+							- inspect variable values with 'x'
+							- examine object methods with 'm'
+							- add watchers for variables with 'w', list them with 'L'
+
+							- debug the problem with debugging_debugger_inside_module.pl, which is the name in $self is accessed as a method, but is a hash key. 
+							  Also the constructor should give the name in the args as $args{name} since we want an item.
+
+							- Perform the same debugging with debugging_debugger_outside_module. We can set breakpoints the same way: SomeModule::say_hello
+						</aside>
+					</section>
+					
+					<section id="$DB::single=1" data-background="images/perl_arcana.jpg">
+						<h2>Debugging when the module has not been loaded yet</h2>
+						<h3 class="fragment">$DB::single=1</h3>
+						<aside class="notes">
+							- Before showing the $DB::single=1 line, talk about more complex pieces of software like the portal.
+							- Once the portal runs, it doesn't admit any more commands, so they must be inputted before running.
+							- But the modules are not yet loaded.
+							- Show the code about the system API (CpPortal::Controller::API::v1).
+							- Try to put a breakpoint there, but show that it is not yet loaded.
+							- Now show the $DB::single=1 line
+							- Put a $DB::single=1 in line 25 of that controller and run the portal in debug with "make run-server-with-live-debugger"
+							- Use the browser and go to: localhost:3000 to perform login and then to localhost:3000/api/v1/system/2504
+							- Inspect variables and some lines before stopping.
+						</aside>
+					</section>
+				</section>
+
+				<section id="where_to_go_from_here">
+					<section id="ide_intro">
+						<h2>Where to go from here?</h2>
+					</section>
+					<section id="ide_komodo" data-background="images/komodo_ide.jpg">
+					</section>
+					<section id="ide_padre" data-background="images/padre_ide.jpg">
+					</section>
+					<section id="ide_vim" data-background="images/vim_ide.jpg">
+					</section>
+				</section>
+
+				<section id="closure">
+					<quote>You can't change the past. You can't even change the future, in the sense that you can only change the present one moment at a time, stubbornly, until the future unwinds itself into the stories of our lives</quote>
+					<p><small>Larry Wall</small></p>
+				</section>
+			</div>
+		</div>
+		<script src="js/reveal.js"></script>
+		<script>
+			Reveal.initialize();
+		</script>
+	</body>
+</html>

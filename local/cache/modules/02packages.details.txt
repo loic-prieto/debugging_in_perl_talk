@@ -1,0 +1,10 @@
+File:         02packages.details.txt
+URL:          http://www.perl.com/CPAN/modules/02packages.details.txt
+Description:  Package names found in cpanfile.snapshot
+Columns:      package name, version, path
+Intended-For: Automated fetch routines, namespace documentation.
+Written-By:   Carton v1.0.28
+Line-Count:   1
+Last-Updated: Tue Oct 25 17:30:11 2016
+
+Math::NumberCruncher               5.00  S/SI/SIFUKURT/Math-NumberCruncher-5.00.tar.gz
