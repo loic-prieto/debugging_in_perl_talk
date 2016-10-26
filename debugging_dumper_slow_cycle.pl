@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
-use Data::Dumper;
-### Auxiliary undocumented functions. Code is documentation. YOLO ###
-sub fetch_data {
+### Auxiliary functions. Code is documentation. YOLO ###
+sub generate {
 	return {
 		pets=>[
 			{race=>'kitten', age=>0.2, name=>'Obijuan'},
@@ -16,7 +15,6 @@ sub fetch_data {
 	};
 }
 
-# Kittify
 my @kitty_keys = ('Kitty','Kitten','Pussy','PussyCat','KittyCat','pup','puppy','mutty','tail_wagger','BooBoo');
 sub step1 {
 	my $data = shift;
@@ -24,7 +22,9 @@ sub step1 {
 	if(ref($result) eq 'HASH') {
 		$result = {};
 		while(my ($key,$value) = each(%$data)){
-			$result->{$kitty_keys[rand(@kitty_keys)]} = step1($value);
+			rand()>0.5?
+				$result->{$kitty_keys[rand(@kitty_keys)]} = step1($value):
+				$result->{$key} = step1($value);
 		}
 	} elsif(ref($result) eq 'ARRAY') {
 		$result = [];
@@ -36,7 +36,6 @@ sub step1 {
 	return $result;
 }
 
-#Camelize keys
 use String::CamelCase qw(decamelize);
 sub step2 {
 	my $data = shift;
@@ -56,7 +55,6 @@ sub step2 {
 	return $result;
 }
 
-# array ordering
 use List::Util qw(shuffle); #YOLO
 sub step3 {
 	my $data = shift;
@@ -89,9 +87,6 @@ sub store_in_mongo {
 # End result should be a structure with ordered values for arrays. Keys of the hashes must have 
 # been renamed to kitten-themed words.
 # Store in mongo for webscale performance.
-store_in_mongo step3 step2 step1 fetch_data;
+store_in_mongo step3 step2 step1 generate;
 
 print "'Tis done\n";
-
-
-

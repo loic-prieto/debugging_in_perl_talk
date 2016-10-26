@@ -2,6 +2,7 @@
     <head>
         <link rel="stylesheet" href="css/reveal.css">
         <link rel="stylesheet" href="css/theme/night.css">
+		<script src="lib/js/head.min.js"></script>
 		<meta charset="utf-8" /> 
     </head>
     <body>
@@ -11,23 +12,23 @@
 				<section id="introduction">
 					<section id="front">
 						<h1>Debugging in Perl</h1>
-						<p>by Loïc Prieto, <small>Perl Dev Extraordinaire</small></p>
+						<p>by Loïc Prieto, <small>2 Months Perl Dev Extraordinaire</small></p>
+						<aside class="notes">
+							To explain debugging in perl, let me tell you a story.
+						</aside>
 					</section>
 
 					<section>
 						<img src="images/what_happens_when_i_die.jpg" />
+					</section>
+
+					<section data-background-image="images/lol_look_at_these.jpg">
 						<aside class="notes">
-							- Let me tell you a story, what happens when I die.
+							The choice. You can either listen to some crazy guy telling about the end of the world, or ignore him.
 						</aside>
 					</section>
 
-					<section data-background="images/lol_look_at_these.jpg">
-						<aside class="notes">
-							- The choice. You can either listen to some crazy guy telling about the end of the world, or ignore him.
-						</aside>
-					</section>
-
-					<section data-background="images/heavenly_fathers.jpg">
+					<section data-background-image="images/heavenly_fathers.jpg">
 						<img src="images/debug_as_a_normal_human_being.png" class="fragment"/>
 						<aside class="notes">
 							- If you sacrificed everything, you got to go to heaven.
@@ -37,7 +38,7 @@
 						</aside>
 					</section>
 
-					<section data-background="images/lol_look_at_these.jpg">
+					<section data-background-image="images/lol_look_at_these.jpg">
 						<aside class="notes">
 							- You made the bad choice and now those guys in the boat look at you with a smirk while you drown.
 							- What happens then? you don't go to heaven, thats for sure. No. You've got to maintain an undocumented perl project written 
@@ -46,7 +47,7 @@
 						</aside>
 					</section>
 
-					<section data-background="images/perl_debugger_is_nice.jpg">
+					<section data-background-image="images/perl_debugger_is_nice.jpg">
 						<h2>Welcome to Perl Debugging in Capside</h2>
 						<div class="fragment">
 							<h3>What are we going to see?</h3>
@@ -65,7 +66,7 @@
 				</section>
 				
 				<section id="traditional_way">
-					<section id="Data::Dumper" data-background="images/old_emo.jpg">
+					<section id="Data::Dumper" data-background-image="images/old_emo.jpg">
 						<h2>Data::Dumper, my old friend</h2>
 						<aside class="notes">
 							- explain a little about Data::Dumper and the print method
@@ -73,8 +74,8 @@
 							- The error is in using $ instead of @ to obtain array length in @precomputed_fibonacci_numbers
 						</aside>
 					</section>
-					<section>
-						<h2>The slow regard of perlish things</h2>
+					<section data-background-image="images/slow_regard.jpg">
+						<h2 >The Slow Regard of Perlish Prints</h2>
 						<p>
 						<aside class="notes">
 							- We're going to see an example of why this method feels lacking
@@ -82,13 +83,13 @@
 							- There's no error, just a slow way of debugging
 						</aside>
 					</section>
-					<section data-background="images/larry-wall-deal-with-it.jpg">
+					<section data-background-image="images/larry-wall-deal-with-it.jpg">
 						<h2>There is a better way</h2>
 					</section>
 				</section>
 				
 				<section id="perl_debugger">
-					<section data-background="images/perl_debugger_is_nice.jpg">
+					<section data-background-image="images/perl_debugger_is_nice.jpg">
 						<h2>The perl debugger</h2>
 						
 						<aside class="notes">
@@ -110,7 +111,7 @@
 						</aside>
 					</section>
 					
-					<section id="$DB::single=1" data-background="images/perl_arcana.jpg">
+					<section id="$DB::single=1" data-background-image="images/perl_arcana.jpg">
 						<h1 style="color:red;background-color:white" class="fragment">$DB::single=1</h1>
 						<h2 style="color:red;background-color:white">Debugging when the module has not been loaded yet</h2>
 						<aside class="notes">
@@ -131,26 +132,32 @@
 					<section id="ide_intro">
 						<h2>Where to go from here?</h2>
 					</section>
-					<section id="ide_komodo" data-background="images/komodo_ide.png">
+					<section id="ide_komodo" data-background-image="images/komodo_ide.png">
 						<h2 style="background-color:#111">Komodo IDE</h2>
 					</section>
-					<section id="ide_padre" data-background="images/padre_ide.jpg">
+					<section id="ide_padre" data-background-image="images/padre_ide.jpg">
 						<h2 style="background-color:#111">Padre IDE</h2>
 					</section>
-					<section id="ide_vim" data-background="images/vim_plugin.jpg">
+					<section id="ide_vim" data-background-image="images/vim_plugin.jpg">
 						<h2 style="background-color:#111">Vim Plugin</h2>
 					</section>
 				</section>
 
 				<section id="closure">
-					<quote>You can't change the past. You can't even change the future, in the sense that you can only change the present one moment at a time, stubbornly, until the future unwinds itself into the stories of our lives</quote>
+					<blockquote>You can't change the past. You can't even change the future, in the sense that you can only change the present one moment at a time, stubbornly, until the future unwinds itself into the stories of our lives</blockquote>
 					<p><small>Larry Wall</small></p>
 				</section>
 			</div>
 		</div>
 		<script src="js/reveal.js"></script>
 		<script>
-			Reveal.initialize();
+			Reveal.initialize({
+				progress:false,
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
 		</script>
 	</body>
 </html>
